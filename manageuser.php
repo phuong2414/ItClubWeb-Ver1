@@ -68,7 +68,18 @@
         </div>
         <!-- finish modal user -->
 
-
+    
+        <div>
+            <form action="" method="POST">
+                 <div class="form-group">
+                         <input type="text" name="id" placeholder="" class="form-label">
+                  </div>
+                  <div class="button">
+                        <button type="submit" name="btn_search" id="btn_search">Search</button>
+                    </div>
+                 
+            </form>
+        </div>
         <div class="detail-right">
             <div class="btn-add">
                 <button class="add-user js-add-user"> Add new</button>
@@ -87,8 +98,27 @@
                         </tr>
                     </thead>
                     <tbody class="table-body">
-                        <?php
-                        include_once("connectDB.php");
+                    <?php 
+                         include_once('ConnectDB.php');
+                        if(isset($_POST['btn_search'])){
+                            $id= $_POST['id'];
+                            $result = mysqli_query($conn,"SELECT * FROM users WHERE StudentID like '%$id%' or username like'%$id%'");
+                            while ($row = mysqli_fetch_array($result)) { ?>
+                                <tr>
+                                    <td>
+                                        <a href="?page=manageuser_update&&stuid=<?php echo $row['StudentID']; ?>" class="update-name js-update-name"> <?php echo $row['StudentID']; ?> | <?php echo $row['username']; ?> </a>
+                                    </td>
+                                    <td> <?php echo $row['Department']; ?> </td>
+                                    <td> <?php echo $row['gender']; ?> </td>
+                                    <td> <?php echo $row['card_uid']; ?> </td>
+                                    <td> <?php echo $row['user_date']; ?> </td>
+                                    <td> <?php echo $row['github']; ?> </td>
+                                    <td> <?php echo $row['email']; ?> </td>
+                                </tr>
+                            <?php } 
+                            
+                        }
+                        else{
                         $result = mysqli_query($conn, "SELECT * FROM users");
                         while ($row = mysqli_fetch_array($result, MYSQLI_ASSOC)) { ?>
                             <tr>
@@ -102,7 +132,9 @@
                                 <td> <?php echo $row['github']; ?> </td>
                                 <td> <?php echo $row['email']; ?> </td>
                             </tr>
-                        <?php } ?>
+                        <?php } 
+                        }
+                    ?>
                     </tbody>
                 </table>
             </div>
