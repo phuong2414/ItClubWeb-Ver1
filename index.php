@@ -86,7 +86,7 @@
             include_once("Changepass.html");
         }
         if ($page == 'event') {
-            include_once("Event.html");
+            include_once("Event.php");
         }
         if ($page == 'changeinfor') {
             include_once("ChangeInfor.php");
