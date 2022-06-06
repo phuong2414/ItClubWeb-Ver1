@@ -29,11 +29,16 @@
         }
     </style>
     <div class="container">
-        <div class="content-block">
+
+
             <form method='POST' class="form-search">
+            <div class="mb-3">
+            <input type="text" name="search">
+            <input class="btn-search-userlist" type="submit" name="search" value="Search"></br>
+            </div>
+            <div class="content-block">
                 <label class="lable-date" for="attendantdate">Choose month:</label>
                 <input class="input-search" type="month" id="checkindate" name="checkindate" placeholder="dd-mm-yyyy" value='<?php echo date('Y-m-d'); ?>'>
-                <input class="btn-search-userlist" type="submit" name="search" value="Search">
             </form>
             <?php
             require 'connectDB.php';
