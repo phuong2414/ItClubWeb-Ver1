@@ -29,11 +29,9 @@
         }
     </style>
     <div class="container">
-
-
             <form method='POST' class="form-search">
             <div class="mb-3">
-            <input type="text" name="search">
+            <input type="text" name="search" style="width: 320px">
             <input class="btn-search-userlist" type="submit" name="search" value="Search"></br>
             </div>
             <div class="content-block">
